@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         Shop-Ware Parts Search
-// @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @name         Better Parts Search
+// @namespace    Shop_Ware_Enhancements
+// @version      1.2
 // @description  Allow for URL search param on parts lookup page
-// @author       You
+// @author       Lucas Pelton @ MOM+POP, Ltd.
 // @match        *://*.shop-ware.com/inventory*
 // @icon         https://app.shop-ware.com/assets/favicons/apple-touch-icon-72x72-89af59ff6d6f34e91a6d7bd08d47589c10693c21fcdfeabad510985c8730ed08.png
-// @updateURL    https://raw.githubusercontent.com/lucas-pelton/Shop-Ware-Enhancements/main/better-search.js
+// @updateURL    https://raw.githubusercontent.com/lucas-pelton/Shop-Ware-Enhancements/main/better-parts-search.js
 // @grant        none
 // ==/UserScript==
 
