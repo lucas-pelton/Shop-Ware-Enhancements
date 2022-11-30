@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shop-Ware Parts Search
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.1
 // @description  Allow for URL search param on parts lookup page
 // @author       You
 // @match        *://*.shop-ware.com/inventory*
