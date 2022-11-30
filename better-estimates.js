@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         Better Shop-Ware Estimates
-// @namespace    http://tampermonkey.net/
-// @version      1.3.1
-// @description  Display approved recommendations on tooltip popup
-// @author       You
-// @match        http*://*.shop-ware.com/estimates
+// @name         Better Estimates
+// @namespace    Shop_Ware_Enhancements
+// @version      2.2
+// @description  Display remaining jobs on estimate detail popup
+// @author       Lucas Pelton @ MOM+POP, Ltd.
+// @match        *://*.shop-ware.com/estimates
 // @icon         https://app.shop-ware.com/assets/favicons/apple-touch-icon-72x72-89af59ff6d6f34e91a6d7bd08d47589c10693c21fcdfeabad510985c8730ed08.png
 // @updateURL    https://raw.githubusercontent.com/lucas-pelton/Shop-Ware-Enhancements/main/better-estimates.js
 // @grant        none
