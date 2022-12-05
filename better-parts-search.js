@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Parts Search
 // @namespace    Shop_Ware_Enhancements
-// @version      1.2
+// @version      1.2.1
 // @description  Allow for URL search param on parts lookup page
 // @author       Lucas Pelton @ MOM+POP, Ltd.
 // @match        *://*.shop-ware.com/inventory*
@@ -15,6 +15,7 @@
 (function () {
     'use strict';
 
+    console.log('Better Parts Search Running')
 
     /*
      * arrive.js
