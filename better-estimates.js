@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Estimates
 // @namespace    Shop_Ware_Enhancements
-// @version      2.2
+// @version      2.2.1
 // @description  Display remaining jobs on estimate detail popup
 // @author       Lucas Pelton @ MOM+POP, Ltd.
 // @match        *://*.shop-ware.com/estimates
@@ -14,6 +14,8 @@
 
 (function () {
     'use strict';
+
+    console.log('Better Estimates Running')
 
 
     /*
