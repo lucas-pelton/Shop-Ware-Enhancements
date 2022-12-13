@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Edit Parts on Work Order
 // @namespace    Shop_Ware_Enhancements
-// @version      1.0
+// @version      1.1
 // @description  Add click to edit part
 // @author       Lucas Pelton @ MOM+POP, Ltd.
 // @match        *://*.shop-ware.com/work_orders*
@@ -36,7 +36,8 @@
     document.head.appendChild(style);
 
 
-    var $partsModal = $('.js-part-edit-modal-container');
+    var $partsModal = $('.js-part-edit-modal-container'),
+        actionString = "Edit Master Part";
 
 
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
@@ -50,7 +51,7 @@
 
         observer.disconnect($partsModal[0]);
         $('.modal-footer', $partsModal)
-            .prepend(`<a target="_blank" href="${url}">Edit Part</a>`)
+            .prepend(`<a target="_blank" href="${url}">${actionString}</a>`)
             .css({
                 'display': 'flex',
                 'justify-content': 'space-between'
