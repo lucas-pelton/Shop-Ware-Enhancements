@@ -12,6 +12,10 @@
 
 /*global $*/
 
+/************
+ * REQUIRES Better Parts Search v1.3+
+ */
+
 (function () {
     'use strict';
 
