@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Estimates
 // @namespace    Shop_Ware_Enhancements
-// @version      2.2.1
+// @version      2.2.2
 // @description  Display remaining jobs on estimate detail popup
 // @author       Lucas Pelton @ MOM+POP, Ltd.
 // @match        *://*.shop-ware.com/estimates
@@ -17,8 +17,20 @@
 
     console.log('Better Estimates Running')
 
+    /***************
+     * Local Style Overrides
+     */
 
-    /*
+    var style = document.createElement('style');
+    style.innerHTML = `
+.backbone-app .scheduler-tooltip {
+    width: 400px !important;
+}
+  `;
+    document.head.appendChild(style);
+
+
+ /*
  * arrive.js
  * v2.4.1
  * https://github.com/uzairfarooq/arrive
@@ -52,15 +64,6 @@
         $('.custom-data').slideDown();
     }
 
-    var style = document.createElement('style');
-    style.innerHTML = `
-.backbone-app .scheduler-tooltip {
-    width: 400px !important;
-}
-  `;
-    document.head.appendChild(style);
-
-
     // Set up replacement XHR functions
     function openReplacement(method, url, async, user, password) {
         this._url = url;
@@ -88,9 +91,6 @@
                     }); // services ends up as an array of strings that we JSON.stringify and store in sessionStorage
 
             sessionStorage.setItem(ns + workOrder, JSON.stringify(services)); // stringify the array for storage
-            //currentJob = ns + workOrder;
-            // ^----- test this being commented out, because we may not need this because currentJob was set on mouseover of cal_event
-            //        we only need to know currentJob when the open tasks data is rendered into the .tooltip
         }
 
         if (this._onreadystatechange) {
@@ -106,31 +106,5 @@
     $(document).on('mouseover', '.dhx_cal_event', function () {
         currentJob = ns + ($(this).find('a').attr('href') || "").split("/").slice(-1)[0];
     });
-
-    //         if ( sessionStorage.getItem(currentJob) ) {
-    //             populateCustomData('hover');
-    //         }
-
-    //     });
-
-
-
-    // Utility functions
-    //     function populateCustomData(src) {
-    //         if ( ('xhr' == src && !$('.tooltip .service-status').length)
-    //               || ('hover' == src && ( !$('.tooltip').length || 'block' != $('.tooltip').css('display')) ) ) {
-    //             // debugger;
-    //             if (alreadyWaiting) window.clearTimeout(alreadyWaiting);
-    //             alreadyWaiting = window.setTimeout(populateCustomData,350,src);
-    //         } else {
-    //             alreadyWaiting = false;
-    //             let data = JSON.parse(sessionStorage.getItem(currentJob)),
-    //                 $theList = $('<ul class="custom-data" style="display:none;margin-bottom:0;">' + data.map(e => "<li>" + e + "</li>").join("") +"</ul>");
-
-    //             $('.tooltip .service-status').delay( ('hover' == src) ? 350 : 0 ).append($theList);
-    //             $('.custom-data').slideDown();
-
-    //         }
-    //     }
 
 })();
