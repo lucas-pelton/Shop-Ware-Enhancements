@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Edit Parts on Work Order
 // @namespace    Shop_Ware_Enhancements
-// @version      2.0
+// @version      2.0.1
 // @description  Add click to edit part
 // @author       Lucas Pelton @ MOM+POP, Ltd.
 // @match        *://*.shop-ware.com/work_orders*
@@ -16,7 +16,7 @@
  * REQUIRES Better Parts Search v1.3+
  */
 
- (function () {
+(function () {
     'use strict';
 
     console.log('Better Edit Parts Running');
@@ -57,7 +57,7 @@
     var $partsModal = $('.js-part-edit-modal-container'),
         actionString = "Edit Master Part";
 
-    var $addPartsSelector = $('#parts-autocomplete .ui-autocomplete');
+    var $addPartsSelector = $('#parts-autocomplete .ui-autocomplete, .modal  .ui-autocomplete');
 
 
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
@@ -116,20 +116,50 @@
 
         addPartsSelectorObserver.disconnect();
         $theUL.append(theStuff);
-        $addPartsSelector.each(function(){
-        addPartsSelectorObserver.observe(this, {
-            childList: true,
+        $addPartsSelector.each(function () {
+            addPartsSelectorObserver.observe(this, {
+                childList: true,
+            });
         });
-    });
 
     });
 
     // define what element should be observed by the observer
     // and what types of mutations trigger the callback
-    $addPartsSelector.each(function(){
+    $addPartsSelector.each(function () {
         addPartsSelectorObserver.observe(this, {
             childList: true,
         });
+    });
+
+    /****
+     * This watches the body for the Quick Recommend modal to pop up
+     * and adds the autocomplete 
+     * */
+
+    function updatePartsSelector() {
+        $addPartsSelector = $('#parts-autocomplete .ui-autocomplete, .modal  .ui-autocomplete');
+    }
+
+    var bodyObserver = new MutationObserver(function (mutations, observer) {
+        // fired when a mutation occurs
+        // console.log(this, mutations);
+        if ($('.search-service-modal .ui-autocomplete').length) {
+            updatePartsSelector();
+            $addPartsSelector.each(function () {
+                addPartsSelectorObserver.observe(this, {
+                    childList: true,
+                });
+            });
+        }
+    });
+
+    // define what element should be observed by the observer
+    // and what types of mutations trigger the callback
+    bodyObserver.observe($('body')[0], {
+        childList: true,
+
+        //...
     });
 
 
